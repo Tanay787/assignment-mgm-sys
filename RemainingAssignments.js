@@ -187,7 +187,7 @@ const RemainingAssignments = ({ route, navigation }) => {
   
 
   const renderAssignment = ({ item }) => {
-    const dueDate = item.dueDate.toDate().toLocaleDateString();
+    const dueDate = item.dueDate.toDate();
 
     return (
       <Card style={styles.card}>
@@ -196,7 +196,7 @@ const RemainingAssignments = ({ route, navigation }) => {
             <Text style={styles.assignmentName}>{item.assignmentName}</Text>
             <Text style={styles.assignmentDetail}>Course: {item.course}</Text>
             <Text style={styles.assignmentDetail}>Year: {item.year}</Text>
-            <Text style={styles.assignmentDetail}>Due Date: {dueDate}</Text>
+            <Text style={styles.assignmentDetail}> Due Date: {dueDate.toLocaleDateString()}</Text>
             <View style={styles.iconsContainer}>
               <TouchableOpacity onPress={() => handleViewFile(item.fileURL)}>
                 <MaterialCommunityIcons
