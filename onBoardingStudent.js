@@ -87,50 +87,27 @@ const Form = ({
 };
 
 const OnboardingScreen = ({ route, navigation }) => {
+  const [uid, setUid] = useState(null);
 
-const [uid, setUid] = useState(null);
+  useEffect(() => {
+    const getUid = async () => {
+      const uid = await AsyncStorage.getItem('uid');
+      setUid(uid);
+    };
 
-   useEffect(() => {
-   const getUid = async () => {
-     const uid = await AsyncStorage.getItem('uid');
-     setUid(uid);
-   };
+    getUid();
+  }, []);
 
-   getUid();
- }, []);
-
-  console.log('uid for OBS: ',uid);
+  console.log('uid for OBS: ', uid);
   const studentID = uid;
-  const [currentSlide, setCurrentSlide] = useState(1);
   const { email } = route.params;
   const [name, setName] = useState('');
   const [rollNo, setRollNo] = useState('');
   const [course, setCourse] = useState('None');
   const [year, setYear] = useState('None');
 
-  const handleNext = () => {
-    setCurrentSlide(currentSlide + 1);
-  };
-
-  const handlePrev = () => {
-    setCurrentSlide(currentSlide - 1);
-  };
-
   const handleSubmit = async () => {
     try {
-      // Check if a student with the same name already exists
-      /* const duplicateNameCheckQuery = firebase
-        .firestore()
-        .collection('Student')
-        .where('name', '==', name);
-      const duplicateNameCheckSnapshot = await duplicateNameCheckQuery.get();
-
-      if (!duplicateNameCheckSnapshot.empty) {
-        // A student with the same name already exists
-        Alert.alert('Error', 'A student with the same name already exists.');
-        return;
-      } */
-
       // Check if a student with the same rollNo already exists
       const duplicateRollNoCheckQuery = firebase
         .firestore()
@@ -186,7 +163,7 @@ const [uid, setUid] = useState(null);
           console.log('Error storing options:', error);
         }
          navigation.reset({
-            index: 0,
+            index:  0,
             routes: [{ name: 'MainStudent', params: { uid: uid } }],
           }); // Navigate to the Student screen
       } else {
@@ -199,60 +176,24 @@ const [uid, setUid] = useState(null);
 
   return (
     <View style={styles.container}>
-      <View style={styles.slideContainer}>
-        {currentSlide === 1 && (
-          <View style={styles.slideContent}>
-            <Text>Slide 1 - Information</Text>
-          </View>
-        )}
-
-        {currentSlide === 2 && (
-          <View style={styles.slideContent}>
-            <Text>Slide 2 - Information</Text>
-          </View>
-        )}
-
-        {currentSlide === 3 && (
-          <View style={styles.wrapper}>
-            <Text>Student Info</Text>
-            <Form
-              email={email}
-              name={name}
-              setName={setName}
-              rollNo={rollNo}
-              setRollNo={setRollNo}
-              course={course}
-              setCourse={setCourse}
-              year={year}
-              setYear={setYear}
-            />
-          </View>
-        )}
+      <View style={styles.wrapper}>
+        <Text>Student Info</Text>
+        <Form
+          email={email}
+          name={name}
+          setName={setName}
+          rollNo={rollNo}
+          setRollNo={setRollNo}
+          course={course}
+          setCourse={setCourse}
+          year={year}
+          setYear={setYear}
+        />
       </View>
 
-      {currentSlide === 3 ? (
-        <View style={styles.buttonContainer}>
-          <Button
-            title="Previous"
-            onPress={handlePrev}
-            disabled={currentSlide === 1}
-          />
-          <Button title="Submit" onPress={handleSubmit} />
-        </View>
-      ) : (
-        <View style={styles.buttonContainer}>
-          <Button
-            title="Previous"
-            onPress={handlePrev}
-            disabled={currentSlide === 1}
-          />
-          <Button
-            title="Next"
-            onPress={handleNext}
-            disabled={currentSlide === 3}
-          />
-        </View>
-      )}
+      <View style={styles.buttonContainer}>
+        <Button title="Submit" onPress={handleSubmit} />
+      </View>
     </View>
   );
 };
@@ -260,50 +201,42 @@ const [uid, setUid] = useState(null);
 const styles = StyleSheet.create({
   Formcontainer: {
     backgroundColor: '#fff',
-    borderRadius: 8,
-    padding: 16,
-    margin: 16,
-    elevation: 4,
-    width: '50%',
+    borderRadius:  8,
+    padding:  16,
+    margin:  16,
+    elevation:  4,
+    width: '80%', // Adjusted width for better fit on different screens
   },
   label: {
-    fontSize: 16,
+    fontSize:  16,
     fontWeight: 'bold',
-    marginBottom: 8,
+    marginBottom:  8,
   },
   input: {
-    borderBottomWidth: 1,
+    borderBottomWidth:  1,
     borderBottomColor: '#000',
-    marginBottom: 16,
-    fontSize: 16,
-    paddingVertical: 8,
+    marginBottom:  16,
+    fontSize:  16,
+    paddingVertical:  8,
   },
   container: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    paddingBottom: height * 0.1,
+    flex:  1,
+    justifyContent: 'center', // Centered vertically
+    paddingBottom: height *  0.1,
   },
-  slideContainer: {
-    flex: 1,
-    justifyContent: 'center',
+  wrapper: {
+    flex:  1,
     alignItems: 'center',
-  },
-  slideContent: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: 'center', // Centered vertically
+    width: '100%', // Adjusted width to  100% for full screen width
   },
   buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 20,
-    paddingBottom: 20,
-  },
-  wrapper: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '150%',
+    justifyContent: 'flex-end', // Aligns the button to the right
+    paddingHorizontal:  20, // Adjusts the horizontal padding around the button
+    paddingBottom:  20,
   },
 });
+
 
 export default OnboardingScreen;
