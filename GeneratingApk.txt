@@ -1,0 +1,37 @@
+Steps to build an apk:
+
+Step1: 
+Eas.json should look like this:
+
+{
+  "cli": {
+    "version": ">= 7.3.0"
+  },
+    "build": {
+      "preview": {
+        "android": {
+          "buildType": "apk"
+        }
+      },
+      "preview2": {
+        "android": {
+          "gradleCommand": ":app:assembleRelease"
+        }
+      },
+      "preview3": {
+        "developmentClient": true
+      },
+      "preview4": {
+        "distribution": "internal"
+      },
+      "production": {}
+    }
+  }
+
+--------------------------------------------------------------
+Step2:
+In the project's root directory run:
+
+``eas build -p android --profile preview``
+
+Then wait until the EAS build generates an apk :)

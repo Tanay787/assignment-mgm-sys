@@ -21,11 +21,18 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.tanay7.snack9a9840f54576411c894ee56430ad70b0"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": "(project2)"
+    "description": "(project2)",
+    "extra": {
+      "eas": {
+        "projectId": "75de0c10-cc4a-4494-abff-c5453b51d3e2"
+      }
+    },
+    "owner": "tanay7"
   }
 }
