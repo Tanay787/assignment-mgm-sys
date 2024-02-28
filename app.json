@@ -20,8 +20,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/assignment-checker.png",
-        "backgroundColor": "#ffffff",
-        "userInterfaceStyle": "light"
+        "backgroundColor": "#ffffff"
       },
       "package": "com.tanay7.snack9a9840f54576411c894ee56430ad70b0"
     },
