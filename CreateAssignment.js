@@ -31,7 +31,6 @@ const CreateAssignment = ({route}) => {
       !dueDate ||
       !file
     ) {
-      console.log('Please fill in all the fields');
       Alert.alert('Error', 'Please fill in all the fields');
       return;
     }
@@ -54,7 +53,6 @@ const CreateAssignment = ({route}) => {
         (snapshot) => {
           const progress = (snapshot.bytesTransferred / snapshot.totalBytes);
           setUploadProgress(progress);
-          console.log(`Upload is ${progress}% complete`);
         },
         (error) => {
           console.log('File upload error:', error);
@@ -85,12 +83,10 @@ const CreateAssignment = ({route}) => {
           setDueDate(new Date());
           setFile(null);
 
-          console.log('Assignment created successfully!');
           Alert.alert('Success', 'Assignment created successfully!');
         }
       );
     } catch (error) {
-      console.log('Error creating assignment:', error);
       Alert.alert('Error', 'Failed to create assignment. Please try again.');
     }
   };

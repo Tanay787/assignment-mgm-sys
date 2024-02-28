@@ -17,7 +17,6 @@ const categories = [
 
 const MainTeacher = ({ navigation, route }) => {
   const uid = route.params.uid;
-  console.log('uid for MT: ', uid);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const renderCategoryCard = (category) => {
