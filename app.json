@@ -4,10 +4,10 @@
     "slug": "snack-9a9840f5-4576-411c-894e-e56430ad70b0",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/assignment-checker.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/adaptive-icon.png",
+      "image": "./assets/assignment-checker.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/assignment-checker.png",
         "backgroundColor": "#ffffff",
         "userInterfaceStyle": "light"
       },
