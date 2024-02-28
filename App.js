@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Font from 'expo-font';
 
+//pramod
+
 import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
@@ -78,8 +80,8 @@ export default function App() {
         <Stack.Navigator
           initialRouteName="Home"
           screenOptions={{
-            headerTintColor: '#ffffff',
-            headerStyle: { backgroundColor: '#1e1e24' },
+            headerTintColor: '#1e1e24',
+            headerStyle: { backgroundColor: '#ffffff' },
           }}>
           <Stack.Screen name="Create" component={CreateAssignment} />
           <Stack.Screen name="Manage" component={ManageAssignments} />
@@ -89,8 +91,22 @@ export default function App() {
             component={Home}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Signup" component={Signup} />
+          <Stack.Screen
+            name="Login"
+            component={Login}
+            options={{
+              headerTintColor: '#ffffff',
+              headerStyle: { backgroundColor: '#1e1e24' },
+            }}
+          />
+          <Stack.Screen
+            name="Signup"
+            component={Signup}
+            options={{
+              headerTintColor: '#ffffff',
+              headerStyle: { backgroundColor: '#1e1e24' },
+            }}
+          />
           <Stack.Screen name="Hod" component={Hod} />
           <Stack.Screen name="MainTeacher" component={MainTeacher} />
           <Stack.Screen name="MainStudent" component={MainStudent} />
