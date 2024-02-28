@@ -24,9 +24,7 @@ const Login = ({ navigation }) => {
       const userCredential = await firebase
         .auth()
         .signInWithEmailAndPassword(email, password);
-      console.log('userCredentials: ', userCredential);
       const uid = userCredential.user.uid;
-      console.log('uid: ', uid);
       setUid(uid);
       await AsyncStorage.setItem('uid', uid); //Setting UId
 
