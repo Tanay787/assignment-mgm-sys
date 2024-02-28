@@ -11,8 +11,8 @@ import firebase from 'firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const categories = [
-  { id: 1, title: 'Create Assingments' },
-  { id: 2, title: 'Manage Assingments' },
+  { id: 1, title: 'Create Assignments' },
+  { id: 2, title: 'Manage Assignments' },
 ];
 
 const MainTeacher = ({ navigation, route }) => {
